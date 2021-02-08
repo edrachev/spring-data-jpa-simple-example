@@ -9,7 +9,6 @@ import javax.annotation.PostConstruct;
 import java.util.List;
 
 @RestController
-@RequestMapping
 public class Resource {
     @Autowired
     private BooksRepository booksRepository;
