@@ -2,6 +2,7 @@ package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -49,6 +50,16 @@ public class Resource {
     @GetMapping("/books")
     public Iterable<Book> readAllBooks() {
         return booksRepository.findAll();
+    }
+
+    @GetMapping("/books-one/{id}")
+    public Book readBook(@PathVariable Long id) {
+        return booksRepository.findById(id).get();
+    }
+
+    @GetMapping("/books/{ids}")
+    public Iterable<Book> readBooks(@PathVariable List<Long> ids) {
+        return booksRepository.findAllById(ids);
     }
 
     @GetMapping("/authors")
